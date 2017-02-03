@@ -11,6 +11,7 @@ $config = [
           'theme' => [
             'pathMap' => [
               '@app/views' => '@app/themes/gentelella/views',
+              //'@app/views' => '@app/themes/adminlte/views',
             ],
           ],
         ],
