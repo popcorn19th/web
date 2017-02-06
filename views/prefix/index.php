@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\WebboardSearch */
+/* @var $searchModel app\models\PrefixSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Webboard : กระดานสนทนา';
+$this->title = 'Prefixes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="webboard-index">
+<div class="prefix-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('ตั้งกระทู้', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Prefix', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,9 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'question_id',
-            'detail:ntext',
-            'create_date',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

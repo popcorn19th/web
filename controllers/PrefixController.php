@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\MemberTest;
-use app\models\MemberTestSearch;
+use app\models\Prefix;
+use app\models\PrefixSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * MemberTestController implements the CRUD actions for MemberTest model.
+ * PrefixController implements the CRUD actions for Prefix model.
  */
-class MemberTestController extends Controller
+class PrefixController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Lists all MemberTest models.
+     * Lists all Prefix models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MemberTestSearch();
+        $searchModel = new PrefixSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Displays a single MemberTest model.
+     * Displays a single Prefix model.
      * @param integer $id
      * @return mixed
      */
@@ -58,22 +57,16 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Creates a new MemberTest model.
+     * Creates a new Prefix model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MemberTest();
+        $model = new Prefix();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-           if (($filename = $model->upload()) !== false) {
-             $model->photo = $filename;
-             $model->save(false);
-             return $this->redirect(['view', 'id' => $model->id]);
-           }
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +75,7 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Updates an existing MemberTest model.
+     * Updates an existing Prefix model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,13 +84,8 @@ class MemberTestController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) ) {
-          $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-         if (($filename = $model->upload()) !== false) {
-           $model->photo = $filename;
-           $model->save(false);
-           return $this->redirect(['view', 'id' => $model->id]);
-         }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -106,7 +94,7 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Deletes an existing MemberTest model.
+     * Deletes an existing Prefix model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +107,15 @@ class MemberTestController extends Controller
     }
 
     /**
-     * Finds the MemberTest model based on its primary key value.
+     * Finds the Prefix model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MemberTest the loaded model
+     * @return Prefix the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MemberTest::findOne($id)) !== null) {
+        if (($model = Prefix::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

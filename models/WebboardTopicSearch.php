@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\MemberTest;
+use app\models\WebboardTopic;
 
 /**
- * MemberTestSearch represents the model behind the search form about `app\models\MemberTest`.
+ * WebboardTopicSearch represents the model behind the search form about `app\models\WebboardTopic`.
  */
-class MemberTestSearch extends MemberTest
+class WebboardTopicSearch extends WebboardTopic
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class MemberTestSearch extends MemberTest
     public function rules()
     {
         return [
-            [['id', 'age'], 'integer'],
-            [['username', 'password', 'firstname', 'lastname', 'nickname', 'email'], 'safe'],
+            [['id'], 'integer'],
+            [['subject', 'user', 'detail', 'create_date'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class MemberTestSearch extends MemberTest
      */
     public function search($params)
     {
-        $query = MemberTest::find();
+        $query = WebboardTopic::find();
 
         // add conditions that should always apply here
 
@@ -60,15 +60,12 @@ class MemberTestSearch extends MemberTest
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'age' => $this->age,
+            'create_date' => $this->create_date,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'firstname', $this->firstname])
-            ->andFilterWhere(['like', 'lastname', $this->lastname])
-            ->andFilterWhere(['like', 'nickname', $this->nickname])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'subject', $this->subject])
+            ->andFilterWhere(['like', 'user', $this->user])
+            ->andFilterWhere(['like', 'detail', $this->detail]);
 
         return $dataProvider;
     }

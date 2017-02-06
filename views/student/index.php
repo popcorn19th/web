@@ -24,11 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'id',
             'username',
             'password',
-            'id',
-            'no',
-            'firstname',
+            'student_id',
+            'citizen_id',
+            // 'firstname',
             // 'lastname',
             // 'nickname',
             // 'birthday',

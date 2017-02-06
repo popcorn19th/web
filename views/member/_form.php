@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\MemberTest */
+/* @var $model app\models\Member */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="member-test-form">
+<div class="member-form">
 
     <?php $form = ActiveForm::begin(['layout' => 'horizontal','options' => ['enctype' => 'multipart/form-data']]); ?>
 

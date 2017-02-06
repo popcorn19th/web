@@ -1,34 +1,52 @@
 <?php
 
-/* @var $this yii\web\View */
-
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\grid\ActionColumn;
 
-$this->title = 'Member';
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\MemberSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Member ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="member-index">
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('<i class="fa fa-plus"></i> เพิ่มสมาชิก', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <div class="x_panel">
+        <div class="x_title">
+          <h2>Member <small>รายการสมาชิก</small></h2>
+
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
 
 
-  <p>
-    <a href="index.php?r=member/create" class="btn btn-success">Add Member</a>
-  </p>
-  <?= GridView::widget([
-    'dataProvider' => $provider,
-    'columns' => [
-        'id',
-        'username',
-        'firstname',
-        'lastname',
-        'nickname',
-        'age',
-        'email',
-        [
-        'class' => ActionColumn::className(),
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            //'id',
+            'photo',
+            'username',
+            'firstname',
+            'lastname',
+            // 'nickname',
+            // 'age',
+            // 'email:email',
+
+            ['class' => 'yii\grid\ActionColumn'],
         ],
-    ],
-]) ?>
+    ]); ?>
 
+  </div>
+</div>
 </div>

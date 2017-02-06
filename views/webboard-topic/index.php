@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\WebboardSearch */
+/* @var $searchModel app\models\WebboardTopicSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Webboard : กระดานสนทนา';
+$this->title = 'Webboard Topics';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="webboard-index">
+<div class="webboard-topic-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('ตั้งกระทู้', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Webboard Topic', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
-            'question_id',
+            'subject',
+            'user',
             'detail:ntext',
             'create_date',
 

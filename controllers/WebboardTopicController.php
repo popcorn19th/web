@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Member;
-use app\models\MemberSearch;
+use app\models\WebboardTopic;
+use app\models\WebboardTopicSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * MemberController implements the CRUD actions for Member model.
+ * WebboardTopicController implements the CRUD actions for WebboardTopic model.
  */
-class MemberController extends Controller
+class WebboardTopicController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class MemberController extends Controller
     }
 
     /**
-     * Lists all Member models.
+     * Lists all WebboardTopic models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MemberSearch();
+        $searchModel = new WebboardTopicSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class MemberController extends Controller
     }
 
     /**
-     * Displays a single Member model.
+     * Displays a single WebboardTopic model.
      * @param integer $id
      * @return mixed
      */
@@ -58,22 +57,16 @@ class MemberController extends Controller
     }
 
     /**
-     * Creates a new Member model.
+     * Creates a new WebboardTopic model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Member();
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-           if (($filename = $model->upload()) !== false) {
-             $model->photo = $filename;
-             $model->save(false);
-             return $this->redirect(['view', 'id' => $model->id]);
-           }
-
+        $model = new WebboardTopic();
+        $model->create_date = date('Y-m-d H:i:s');
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +75,7 @@ class MemberController extends Controller
     }
 
     /**
-     * Updates an existing Member model.
+     * Updates an existing WebboardTopic model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,13 +84,8 @@ class MemberController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) ) {
-          $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-         if (($filename = $model->upload()) !== false) {
-           $model->photo = $filename;
-           $model->save(false);
-           return $this->redirect(['view', 'id' => $model->id]);
-         }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -106,7 +94,7 @@ class MemberController extends Controller
     }
 
     /**
-     * Deletes an existing Member model.
+     * Deletes an existing WebboardTopic model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +107,15 @@ class MemberController extends Controller
     }
 
     /**
-     * Finds the Member model based on its primary key value.
+     * Finds the WebboardTopic model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Member the loaded model
+     * @return WebboardTopic the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Member::findOne($id)) !== null) {
+        if (($model = WebboardTopic::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

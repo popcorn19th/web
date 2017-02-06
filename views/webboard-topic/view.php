@@ -4,17 +4,18 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Student */
+/* @var $model app\models\WebboardTopic */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Students', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Webboard Topics', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="student-view">
+<div class="webboard-topic-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Back', ['index'], ['class' => 'btn btn-default']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -29,21 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-            'password',
-            'student_id',
-            'citizen_id',
-            'firstname',
-            'lastname',
-            'nickname',
-            'birthday',
-            'age',
-            'address:ntext',
-            'status_id',
-            'prefix_id',
-            'work:ntext',
-            'email:email',
-            'tel',
+            'subject',
+            'user',
+            'detail:ntext',
+            'create_date',
         ],
     ]) ?>
 

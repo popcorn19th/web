@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\StudentSearch */
+/* @var $model app\models\MemberSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="student-search">
+<div class="member-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,35 +17,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'Photo') ?>
+
     <?= $form->field($model, 'username') ?>
 
     <?= $form->field($model, 'password') ?>
 
-    <?= $form->field($model, 'student_id') ?>
+    <?= $form->field($model, 'firstname') ?>
 
-    <?= $form->field($model, 'citizen_id') ?>
-
-    <?php // echo $form->field($model, 'firstname') ?>
-
-    <?php // echo $form->field($model, 'lastname') ?>
+    <?= $form->field($model, 'lastname') ?>
 
     <?php // echo $form->field($model, 'nickname') ?>
 
-    <?php // echo $form->field($model, 'birthday') ?>
-
     <?php // echo $form->field($model, 'age') ?>
 
-    <?php // echo $form->field($model, 'address') ?>
-
-    <?php // echo $form->field($model, 'status_id') ?>
-
-    <?php // echo $form->field($model, 'prefix_id') ?>
-
-    <?php // echo $form->field($model, 'work') ?>
-
     <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'tel') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

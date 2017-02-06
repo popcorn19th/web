@@ -2,10 +2,10 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'TEST';
+$this->title = 'Alumni Information Techonology Management System';
 ?>
     <div class="jumbotron">
-        <h1>"WELCOME To Test System"</h1>
+        <h1>"Alumni Information Techonology Management System"</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 

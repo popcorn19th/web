@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Test System',
+        'brandLabel' => 'Alumni Information Techonology Management System',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-success navbar-default navbar-fixed-top',
@@ -68,7 +68,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Test System <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Alumni Information Techonology Management System <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
