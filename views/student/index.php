@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\StudentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -24,22 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'username',
-            'password',
+            //'id',
+            //'username',
+            //'password',
             'student_id',
-            'citizen_id',
-            // 'firstname',
-            // 'lastname',
+            //'prefix.name',
+            'firstname',
+            'lastname',
+            // 'gender',
             // 'nickname',
+            // 'citizen_id',
             // 'birthday',
             // 'age',
             // 'address:ntext',
-            // 'status_id',
-            // 'prefix_id',
+            'status.name',
+            // 'class',
             // 'work:ntext',
             // 'email:email',
             // 'tel',
+            // 'photo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

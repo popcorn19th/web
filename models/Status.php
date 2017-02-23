@@ -37,7 +37,7 @@ class Status extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'สถานะ',
         ];
     }
 }

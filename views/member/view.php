@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Member */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Member s', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Members', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-view">
@@ -28,19 +28,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'photo',
-            [
-              'attribute'=>'photo',
-              'value'=>'uploads/'.$model->photo,
-              'format' => ['image',['width'=>'100','height'=>'100']],
-            ],
+            'id',
+            'photo',
             'username',
             'password',
+            'student_id',
+            'citizen_id',
+            'prefix_id',
             'firstname',
             'lastname',
             'nickname',
+            'birthday',
             'age',
+            'gender',
+            'graduate_year',
+            'generation',
+            'occupation',
+            'position',
+            'status_id',
+            'study',
+            'level',
+            'class',
+            'address:ntext',
+            'work:ntext',
             'email:email',
+            'tel',
+            'create_date',
         ],
     ]) ?>
 

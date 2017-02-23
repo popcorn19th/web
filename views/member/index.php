@@ -7,14 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Member ';
+$this->title = 'Members';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+      <p>
         <?= Html::a('<i class="fa fa-plus"></i> เพิ่มสมาชิก', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -26,8 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="x_content">
 
-
-
+    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -35,18 +36,33 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'photo',
-            'username',
-            'firstname',
-            'lastname',
+            //'photo',
+            //'username',
+            //'password',
+            'student_id',
+            // 'citizen_id',
+            // 'prefix_id',
+             'firstname',
+             'lastname',
             // 'nickname',
+            // 'birthday',
             // 'age',
+            // 'gender',
+            // 'graduate_year',
+            // 'generation',
+            // 'occupation',
+            // 'position',
+             'status_id',
+            // 'study',
+            // 'level',
+            // 'class',
+            // 'address:ntext',
+            // 'work:ntext',
             // 'email:email',
+            // 'tel',
+            // 'create_date',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-  </div>
-</div>
 </div>

@@ -24,26 +24,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
     <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
+            'model' => $model,
+            'attributes' => [
+                //'photo',
+                [
+                  'attribute'=>'photo',
+                  'value'=>'uploads/'.$model->photo,
+                  'format' => ['image',['width'=>'100','height'=>'100']],
+                ],
             'id',
             'username',
             'password',
             'student_id',
-            'citizen_id',
+            'prefix_id',
             'firstname',
             'lastname',
+            'gender',
             'nickname',
+            'citizen_id',
             'birthday',
             'age',
             'address:ntext',
             'status_id',
-            'prefix_id',
+            'class',
             'work:ntext',
             'email:email',
             'tel',
+            'photo',
         ],
     ]) ?>
 

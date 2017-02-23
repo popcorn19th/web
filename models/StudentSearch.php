@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Student;
+use app\models\Prefix;
+use app\models\Status;
 
 /**
  * StudentSearch represents the model behind the search form about `app\models\Student`.
@@ -18,8 +20,8 @@ class StudentSearch extends Student
     public function rules()
     {
         return [
-            [['id', 'age', 'status_id', 'prefix_id'], 'integer'],
-            [['username', 'password', 'student_id', 'citizen_id', 'firstname', 'lastname', 'nickname', 'birthday', 'address', 'work', 'email', 'tel'], 'safe'],
+            [['id', 'prefix_id', 'age', 'status_id', 'class'], 'integer'],
+            [['username', 'password', 'student_id', 'firstname', 'lastname', 'gender', 'nickname', 'citizen_id', 'birthday', 'address', 'work', 'email', 'tel', 'photo'], 'safe'],
         ];
     }
 
@@ -60,23 +62,26 @@ class StudentSearch extends Student
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'prefix_id' => $this->prefix_id,
             'birthday' => $this->birthday,
             'age' => $this->age,
             'status_id' => $this->status_id,
-            'prefix_id' => $this->prefix_id,
+            'class' => $this->class,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'student_id', $this->student_id])
-            ->andFilterWhere(['like', 'citizen_id', $this->citizen_id])
             ->andFilterWhere(['like', 'firstname', $this->firstname])
             ->andFilterWhere(['like', 'lastname', $this->lastname])
+            ->andFilterWhere(['like', 'gender', $this->gender])
             ->andFilterWhere(['like', 'nickname', $this->nickname])
+            ->andFilterWhere(['like', 'citizen_id', $this->citizen_id])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'work', $this->work])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'tel', $this->tel]);
+            ->andFilterWhere(['like', 'tel', $this->tel])
+            ->andFilterWhere(['like', 'photo', $this->photo]);
 
         return $dataProvider;
     }

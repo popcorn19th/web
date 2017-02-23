@@ -16,7 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Prefix', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-plus"></i> เพิ่มคำนำหน้า', ['create'], ['class' => 'btn btn-success']) ?>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_panel">
+          <div class="x_title">
+            <h2>Prefix <small>คำนำหน้า</small></h2>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

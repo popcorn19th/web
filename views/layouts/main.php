@@ -27,10 +27,10 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Alumni Information Techonology Management System',
+        'brandLabel' => 'Alumni Information Technology Management System',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-success navbar-default navbar-fixed-top',
+            'class' => 'navbar-info navbar-default navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([

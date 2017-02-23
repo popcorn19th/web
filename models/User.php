@@ -45,6 +45,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             if ($user['accessToken'] === $token) {
                 return new static($user);
             }
+            
         }
 
         return null;

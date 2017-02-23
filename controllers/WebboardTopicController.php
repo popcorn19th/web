@@ -44,6 +44,17 @@ class WebboardTopicController extends Controller
         ]);
     }
 
+    public function actionList()
+    {
+        $searchModel = new WebboardTopicSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single WebboardTopic model.
      * @param integer $id
@@ -64,7 +75,7 @@ class WebboardTopicController extends Controller
     public function actionCreate()
     {
         $model = new WebboardTopic();
-        $model->create_date = date('Y-m-d H:i:s');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

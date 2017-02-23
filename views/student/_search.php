@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= //$form->field($model, 'id') ?>
 
     <?= $form->field($model, 'username') ?>
 
@@ -23,13 +23,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'student_id') ?>
 
-    <?= $form->field($model, 'citizen_id') ?>
+    <?= $form->field($model, 'prefix_id') ?>
 
-    <?php // echo $form->field($model, 'firstname') ?>
+    <?php //echo $form->field($model, 'firstname') ?>
 
-    <?php // echo $form->field($model, 'lastname') ?>
+    <?php //echo $form->field($model, 'lastname') ?>
+
+    <?php // echo $form->field($model, 'gender') ?>
 
     <?php // echo $form->field($model, 'nickname') ?>
+
+    <?php // echo $form->field($model, 'citizen_id') ?>
 
     <?php // echo $form->field($model, 'birthday') ?>
 
@@ -37,9 +41,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'status_id') ?>
+    <?php //echo $form->field($model, 'status_id') ?>
 
-    <?php // echo $form->field($model, 'prefix_id') ?>
+    <?php // echo $form->field($model, 'class') ?>
 
     <?php // echo $form->field($model, 'work') ?>
 
@@ -47,10 +51,12 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'tel') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
+    <?php // echo $form->field($model, 'photo') ?>
+
+    <div style="text-align:center;">
+          <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+          </div>
+
 
     <?php ActiveForm::end(); ?>
 

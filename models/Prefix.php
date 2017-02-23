@@ -37,7 +37,7 @@ class Prefix extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'คำนำหน้า',
         ];
     }
 }

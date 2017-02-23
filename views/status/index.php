@@ -16,8 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Status', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-plus"></i> เพิ่มสถานะ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Status<small>สถานะ</small></h2>
+
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

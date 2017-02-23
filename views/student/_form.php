@@ -1,18 +1,18 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use app\models\Status;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
-
+use app\models\Prefix;
+use app\models\Status;
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
 <div class="student-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['layout' => 'horizontal','options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
@@ -20,13 +20,25 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'student_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'citizen_id')->textInput(['maxlength' => true]) ?>
+    <?php
+      $prefixs=Prefix::find()->all();
+      $listData=ArrayHelper::map($prefixs,'id','name');
+
+      echo $form->field($model, 'prefix_id')->dropDownList(
+      								$listData,
+      								['prompt'=>'เลือกคำนำหน้า']);
+    ?>
+
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lastname')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'gender')->radioList(['ชาย'=>'ชาย','หญิง'=>'หญิง']); ?>
+
     <?= $form->field($model, 'nickname')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'citizen_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'birthday')->textInput() ?>
 
@@ -34,18 +46,17 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status_id')->textInput() ?>
-
     <?php
-        $status=Status::find()->all();
-        $listDataStatus = ArrayHelper::map($status,'id','name');
+        $Status=Status::find()->all();
+        $listData=ArrayHelper::map($Status,'id','name');
+
         echo $form->field($model, 'status_id')->dropDownList(
-				$listDataStatus,
-				['prompt'=>'เลือกสถานะ']);
-    ?>
+        								$listData,
+        								['prompt'=>'เลือกสถานะ']);
+      ?>
 
 
-    <?= $form->field($model, 'prefix_id')->textInput() ?>
+    <?= $form->field($model, 'class')->textInput() ?>
 
     <?= $form->field($model, 'work')->textarea(['rows' => 6]) ?>
 
@@ -53,10 +64,18 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+    <?php
+     if($model->photo != "") {
+       echo '<img src="uploads/'.$model->photo.'" width="100" />';
+     }
+     ?>
+   <?= $form->field($model, 'imageFile')->fileInput() ?>
 
-    <?php ActiveForm::end(); ?>
+
+   <div style="text-align:center;">
+       <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+       </div>
+
+   <?php ActiveForm::end(); ?>
 
 </div>
