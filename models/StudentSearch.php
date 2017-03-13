@@ -6,8 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Student;
-use app\models\Prefix;
-use app\models\Status;
+
 
 /**
  * StudentSearch represents the model behind the search form about `app\models\Student`.

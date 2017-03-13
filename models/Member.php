@@ -3,6 +3,15 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Model;
+use yii\data\ActiveDataProvider;
+use app\models\Member;
+use app\models\Prefix;
+use app\models\Status;
+use yii\web\Controller;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
+
 
 /**
  * This is the model class for table "member".
@@ -36,6 +45,7 @@ use Yii;
  */
 class Member extends \yii\db\ActiveRecord
 {
+  public $imageFile;
     /**
      * @inheritdoc
      */
@@ -64,7 +74,6 @@ class Member extends \yii\db\ActiveRecord
             [['occupation', 'position', 'study', 'level'], 'string', 'max' => 500],
             [['class'], 'string', 'max' => 5],
             [['tel'], 'string', 'max' => 15],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -75,7 +84,7 @@ class Member extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ลำดับ',
-            'photo' => 'รูปภาพ',
+            'photo' => 'photo',
             'username' => 'ชื่อผู้ใช้งาน',
             'password' => 'รหัสผ่าน',
             'student_id' => 'รหัสนักศึกษา',
@@ -99,18 +108,34 @@ class Member extends \yii\db\ActiveRecord
             'work' => 'สถานที่ทำงาน',
             'email' => 'อีเมลล์',
             'tel' => 'เบอร์โทร',
-            'create_date' => 'วันเวลาสมัคร',
+
         ];
     }
 
     public function upload()
-    {
-        if ($this->validate()) {
-            $filename = $this->imageFile->baseName . '.' . $this->imageFile->extension;
-            $this->imageFile->saveAs('uploads/' . $filename);
-            return $filename;
-        } else {
-            return false;
-        }
+       {
+           if ($this->validate()) {
+             if(isset($this->imageFile->extension)){
+               $filename = $this->imageFile->baseName . '.' . $this->imageFile->extension;
+               $this->imageFile->saveAs('uploads/' . $filename);
+               return $filename;
+             }else{
+               return false;
+             }
+
+           } else {
+               return false;
+           }
+       }
+
+       public function getPrefix()
+       {
+           return $this->hasOne(Prefix::className(), ['id' => 'prefix_id']);
+       }
+
+       public function getStatus()
+       {
+           return $this->hasOne(Status::className(), ['id' => 'status_id']);
+       }
+
     }
-}

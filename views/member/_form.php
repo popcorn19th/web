@@ -1,10 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Prefix;
 use app\models\Status;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Member */
@@ -12,12 +13,12 @@ use app\models\Status;
 ?>
 
 <div class="member-form">
-
+    <div style="text-align:center;">
     <?php $form = ActiveForm::begin(['layout' => 'horizontal','options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?php
      if($model->photo != "") {
-       echo '<img src="uploads/'.$model->photo.'" width="100" />';
+       echo '<img src="uploads/'.$model->photo.'" align=center width="150" />';
      }
      ?>
     <?= $form->field($model, 'imageFile')->fileInput() ?>
@@ -82,11 +83,11 @@ use app\models\Status;
 
     <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'create_date')->textInput() ?>
+</div>
 
-    <div class="form-group">
+    <div style="text-align:center;">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+        </div>
 
     <?php ActiveForm::end(); ?>
 

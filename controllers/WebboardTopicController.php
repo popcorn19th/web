@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * WebboardTopicController implements the CRUD actions for WebboardTopic model.
  */
-class WebboardTopicController extends Controller
+class WebboardTopicController extends MainController
 {
     /**
      * @inheritdoc
@@ -20,6 +20,15 @@ class WebboardTopicController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

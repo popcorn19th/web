@@ -20,8 +20,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
         ],
         '101' => [
             'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
+            'username' => 'username',
+            'password' => 'password',
             'authKey' => '101key',
             'accessToken' => '101-token',
         ],
@@ -45,7 +45,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             if ($user['accessToken'] === $token) {
                 return new static($user);
             }
-            
+
         }
 
         return null;

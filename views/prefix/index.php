@@ -17,17 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('<i class="fa fa-plus"></i> เพิ่มคำนำหน้า', ['create'], ['class' => 'btn btn-success']) ?>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_panel">
-          <div class="x_title">
+      </p>
+
             <h2>Prefix <small>คำนำหน้า</small></h2>
-
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
-
-
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],

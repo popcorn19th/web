@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\WebboardTopic */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Webboard Topics', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Webboard Topics', 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="webboard-topic-view">
@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Back', ['index', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

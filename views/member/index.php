@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Status;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -11,23 +12,10 @@ $this->title = 'Members';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+  <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-      <p>
         <?= Html::a('<i class="fa fa-plus"></i> เพิ่มสมาชิก', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <div class="x_panel">
-        <div class="x_title">
-          <h2>Member <small>รายการสมาชิก</small></h2>
-
-          <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
-
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -41,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'password',
             'student_id',
             // 'citizen_id',
-            // 'prefix_id',
-             'firstname',
-             'lastname',
+            //'prefix.name',
+            'firstname',
+            'lastname',
             // 'nickname',
             // 'birthday',
             // 'age',
@@ -52,14 +40,19 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'generation',
             // 'occupation',
             // 'position',
-             'status_id',
+            // 'status.name',
+             [
+                'attribute'=>'status_id',
+                'value' => 'status.name',
+                'filter'=>ArrayHelper::map(Status::find()->asArray()->all(), 'id', 'name'),
+            ],
             // 'study',
             // 'level',
             // 'class',
             // 'address:ntext',
             // 'work:ntext',
             // 'email:email',
-            // 'tel',
+             //'tel',
             // 'create_date',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="prefix-form">
-    <?php $form = ActiveForm::begin(['layout' => 'horizontal','options' => ['enctype' => 'multipart/form-data']]); ?>
+    
 
     <?php $form = ActiveForm::begin(); ?>
 

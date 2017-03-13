@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
@@ -34,13 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-success', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('LOG IN', ['class' => 'btn btn-success', 'name' => 'login-button']) ?>
+
             </div>
         </div>
 
     <?php ActiveForm::end(); ?>
 
-    <div class="col-lg-offset-1" style="color:#999;">
-        <a href="register_test.php"<strong>สมัครสมาชิกที่นี่</a><p><strong>ลืมรหัสผ่าน</strong></p><br><code>app\models\User::$users</code>.
+    <div class="col-lg-offset-1" style="color:#03A9F4;">
+        <a href='register_test.php'<strong>สมัครสมาชิกที่นี่</a><br><code>app\models\User::$users</code>.
     </div>
 </div>

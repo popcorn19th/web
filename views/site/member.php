@@ -7,7 +7,7 @@ use yii\helpers\Html;
 $this->title = 'Member';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="site-member">
 
 
   <p>
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
       </tr>
     </thead>
     <tbody>
-    
+
     </tbody>
   </table>
 

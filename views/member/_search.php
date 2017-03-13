@@ -67,10 +67,10 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'create_date') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
+    <div style="text-align:center;">
+          <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+          </div>
+
 
     <?php ActiveForm::end(); ?>
 

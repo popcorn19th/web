@@ -8,11 +8,13 @@ use app\models\MemberSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+
 
 /**
  * MemberController implements the CRUD actions for Member model.
  */
-class MemberController extends Controller
+class MemberController extends MainController
 {
     /**
      * @inheritdoc
@@ -61,18 +63,24 @@ class MemberController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Member();
+     public function actionCreate()
+     {
+         $model = new Member();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
+         if ($model->load(Yii::$app->request->post())) {
+             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if (($filename = $model->upload()) !== false) {
+              $model->photo = $filename;
+              $model->save(false);
+              return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+         } else {
+             return $this->render('create', [
+                 'model' => $model,
+             ]);
+         }
+     }
 
     /**
      * Updates an existing Member model.
@@ -80,18 +88,23 @@ class MemberController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+     public function actionUpdate($id)
+     {
+         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post()) ) {
+           $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+          if (($filename = $model->upload()) !== false) {
+            $model->photo = $filename;
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+          }
+         } else {
+             return $this->render('update', [
+                 'model' => $model,
+             ]);
+         }
+     }
 
     /**
      * Deletes an existing Member model.

@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * WebboardController implements the CRUD actions for Webboard model.
  */
-class WebboardController extends Controller
+class WebboardController extends MainController
 {
     /**
      * @inheritdoc

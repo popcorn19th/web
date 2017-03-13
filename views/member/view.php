@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\base\Model;
+use yii\web\UploadedFile;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Member */
@@ -15,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Back', ['index', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -26,10 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
+            'model' => $model,
+            'attributes' => [
+                //'photo',
+                [
+                  'attribute'=>'photo',
+                  'value'=>'uploads/'.$model->photo,
+                  'format' => ['image',['width'=>'100','height'=>'100']],
+                ],
             'id',
-            'photo',
             'username',
             'password',
             'student_id',
@@ -53,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'work:ntext',
             'email:email',
             'tel',
-            'create_date',
+
         ],
     ]) ?>
 

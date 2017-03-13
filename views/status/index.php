@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\StatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Status';
+$this->title = 'สถานะ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-index">
@@ -19,13 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('<i class="fa fa-plus"></i> เพิ่มสถานะ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-      <div class="x_panel">
-        <div class="x_title">
           <h2>Status<small>สถานะ</small></h2>
-
-          <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -33,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],

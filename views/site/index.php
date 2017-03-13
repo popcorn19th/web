@@ -2,14 +2,15 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
 $this->title = 'Alumni Information Techonology Management System';
 ?>
     <div class="lead">
         <h1>Alumni Information Techonology Management System</h1>
-        <p class="jumbo">ระบบศิษย์เก่าสาขาวิชาการจัดการเทคโนโลยีสารสนเทศ</p>
-        <p class="jumbo">Webboard : กระดานสนทนา</p>
-
-        <p><a class="btn btn-lg btn-success" href="member.php">สมัครสมาชิกที่นี่</a></p>
+        <p class="jumbo">ระบบสารสนเทศศิษย์เก่าสาขาวิชาการจัดการเทคโนโลยีสารสนเทศ</p>
+        <p class="jumbo">กระทู้ข่าวสาร ประชาสัมพันธ์</p>
     </div>
 
     <div class="body-content">

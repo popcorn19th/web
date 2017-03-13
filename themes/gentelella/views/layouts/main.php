@@ -6,6 +6,9 @@
  */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
+//admin
 
 $bundle = yiister\gentelella\assets\Asset::register($this);
 
@@ -79,8 +82,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     ["label" => "Home", "url" => ["site/index"], "icon" => "home"],
-                                    ["label" => "Member", "url" => ["member/index"], "icon" => "user"],
-                                    ["label" => "Student", "url" => ["student/index"], "icon" => "user"],
+                                    ["label" => "Profile", "url" => ["admin/index"], "icon" => "user"],
+                                    ["label" => "Member", "url" => ["site/member"], "icon" => "user"],
+                                    ["label" => "Photo", "url" => ["gallery-uploads/index"], "icon" => "image"],
                                     ["label" => "Webboard", "url" => ["webboard-topic/index"], "icon" => "user"],
                                     ["label" => "Status", "url" => ["status/index"], "icon" => "user"],
                                     ["label" => "Prefix", "url" => ["prefix/index"], "icon" => "user"],
@@ -113,7 +117,15 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                     <ul class="nav navbar-nav navbar-right"style="width:300px;">
                         <li class="">
 
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                <li>
+                                  <?= Html::a('<i class="fa fa-sign-out pull-right"></i> Log Out', ['/site/logout'], [
+                                      'data'=>[
+                                          'method' => 'post',
+                                          // 'confirm' => 'Are you sure?',
+                                          // 'params'=>['MyParam1'=>'100', 'MyParam2'=>true],
+                                      ]
+                                  ]) ?>
+                                  <!-- <a href="<?= Url::to('/site/logout') ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a> -->
                                 </li>
 
                                         </a>

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\WebboardTopicSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Webboard Topics';
+$this->title = 'กระทู้';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="webboard-topic-index">
@@ -18,17 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('<i class="fa fa-plus"></i> ตั้งกระทู้', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'subject',
             'user',
             'detail:ntext',
-            
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

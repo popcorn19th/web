@@ -6,9 +6,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = 'ข้อมูลการติดต่อ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
@@ -16,50 +15,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
     <?php else: ?>
 
         <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
+            ข้อมลการติดต่อ สาขาวิชาการจัดการเทคโนโลยีสารสนเทศ คณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยราชภัฎมหาสารคาม
         </p>
 
         <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
+            <div class="col-xs-2 col-sm-3 col-md-7">
+              <align=center hspace="10" vspace="10"/>
+<p align="justify" style="text-indent: 1in">ที่อยู่ : 80 ถนนนครสวรรค์ ตำบลตลาด อำเภอเมือง จังหวัดมหาสารคาม 44000
+<p align="justify" style="text-indent: 1in">Facebook : สาขาวิชาการจัดการเทคโนโลยีสารสนเทศ มรม.
+<p align="justify" style="text-indent: 1in">E-Mail : itm.rmu@gmail.com
+<p align="justify" style="text-indent: 1in">เว็บไซค์สาขา : http://it.rmu.ac.th/itm/ <br clear=center>
+<p align="justify" style="text-indent: 1in">เบอร์โทร.043-020227
 
             </div>
         </div>
